@@ -1,0 +1,2 @@
+# rotational_invariance_data_augmentation
+Revisiting Data Augmentation for Rotational Invariance in Convolutional Neural Networks
