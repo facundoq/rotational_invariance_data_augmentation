@@ -1,0 +1,16 @@
+numba
+numpy
+protobuf
+six
+matplotlib
+scikit-image
+scikit-learn
+h5py
+ipython
+jupyter
+argcomplete
+torch
+torchvision
+progressbar2
+torchsummary
+requests
