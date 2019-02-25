@@ -1,5 +1,5 @@
 
-#Revisiting Data Augmentation for Rotational Invariance in Convolutional Neural Networks
+# Revisiting Data Augmentation for Rotational Invariance in Convolutional Neural Networks
 
 This repository contains the code necessary to obtain the experimental results published in the article "Revisiting Data Augmentation for Rotational Invariance in Convolutional Neural Networks". 
 
