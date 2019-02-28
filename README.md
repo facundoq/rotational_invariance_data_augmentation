@@ -23,11 +23,13 @@ These instructions have been tested on a modern ubuntu-based distro with python 
 * Install libraries
     * `pip install -r requirements.txt`
 * Install [GrouPy with PyTorch support](https://github.com/adambielski/GrouPy)
-   * `mkdir ~/dev`
+   * `mkdir ~/dev` (or whenever you want to download GrouPy's repo)
    * `cd ~/dev`
    * `git clone https://github.com/adambielski/GrouPy.git`
    * `cd GrouPy`
-   * `python setup.py install`
+   * `python setup.py install` (make sure the venv is active for this step)
+   * go back this repo's folder
+   
 * Run the experiments with `python experiment_name> <model> <dataset>`
     * `experiment_rotation.py` trains two models with the dataset: one with the vanilla version, the other with a data-augmented version via rotations.
     * `experiment_accuracy_vs_rotation.py` evaluates how the model's accuracy varies wrt the rotation of the samples
