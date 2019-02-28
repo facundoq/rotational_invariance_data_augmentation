@@ -6,6 +6,10 @@ This repository contains the code necessary to obtain the experimental results p
 ## Abstract
 `Convolutional Neural Networks (CNN) offer state of the art performance in various computer vision tasks. Many of those tasks require different subtypes of affine invariances (scale, rotational, translational) to image transformations. Convolutional layers are translation equivariant by design, but in their basic form lack invariances. In this work we investigate how best to include rotational invariance in a CNN for image classification. Our experiments show that networks trained with data augmentation alone can classify rotated images nearly as well as in the normal unrotated case; this increase in representational power comes only at the cost of training time. We also compare data augmentation versus two modified CNN models for achieving rotational invariance or equivariance, Spatial Transformer Networks and Group Equivariant CNNs, finding no significant accuracy increase with these specialized methods. In the case of data augmented networks, we also analyze which layers help the network to encode the rotational invariance, which is important for understanding its limitations and how to best retrain a network with data augmentation to achieve invariance to rotation.`
 
+## What does this code do
+
+You can train the [AllConvolutional network](https://arxiv.org/abs/1412.6806) and a [simple Convolutional Network](https://github.com/facundoq/rotational_invariance_data_augmentation/blob/master/pytorch/model/simple_conv.py) with or without a [Spatial Transformer Layer](https://arxiv.org/abs/1506.02025) or with modified [Group Equivariant Convolutional Layers](https://arxiv.org/abs/1602.07576)
+
 ## How to run
 
 These instructions have been tested on a modern ubuntu-based distro with python version>=3.5.  
@@ -18,6 +22,12 @@ These instructions have been tested on a modern ubuntu-based distro with python 
     * `source .env/bin/activate`
 * Install libraries
     * `pip install -r requirements.txt`
+* Install [GrouPy with PyTorch support](https://github.com/adambielski/GrouPy)
+   * mkdir ~/dev
+   * cd ~/dev
+   * git clone https://github.com/adambielski/GrouPy.git
+   * cd GrouPy
+   * python setup.py install
 * Run the experiments with `python experiment_name> <model> <dataset>`
     * `experiment_rotation.py` trains two models with the dataset: one with the vanilla version, the other with a data-augmented version via rotations.
     * `experiment_accuracy_vs_rotation.py` evaluates how the model's accuracy varies wrt the rotation of the samples
