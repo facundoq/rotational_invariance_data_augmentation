@@ -31,7 +31,7 @@ model_names=["AllConvolutional","SimpleConv","ResNet","VGGLike"]
 dataset_names=datasets.names
 dataset_names=["mnist","cifar10"]
 train=True
-experiments=["experiment_variance","experiment_accuracy_vs_rotation"]
+experiments=["experiment_variance","experiment_accuracy_vs_rotation""experiment_retraining"]
 
 message=f"""Running experiments, train={train}
 Experiments: {", ".join(experiments)}

@@ -14,3 +14,4 @@ torchvision
 progressbar2
 torchsummary
 requests
+nose

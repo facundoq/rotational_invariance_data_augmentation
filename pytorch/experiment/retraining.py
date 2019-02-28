@@ -4,6 +4,7 @@ from collections import namedtuple
 import numpy as np
 
 from pytorch.training import test,train,eval_scores
+from pytorch.experiment.rotation import get_data_generator
 
 def retraining_accuracy_barchart(model, dataset, unrotated_accuracies,rotated_accuracies,labels,savefig=True):
     import os
@@ -50,15 +51,12 @@ def retraining_accuracy_barchart(model, dataset, unrotated_accuracies,rotated_ac
 RetrainConfig = namedtuple('RetrainConfig', 'batch_size initial_epochs retrain_epochs use_cuda '
                                             'loss_function')
 
-def retraining(model_optimizer_generator,retrained_layers_schemes,config,dataset):
+
+
+def retraining(model,retrained_layers_schemes,config,dataset):
     train_dataset, rotated_train_dataset = get_data_generator(dataset.x_train, dataset.y_train, config.batch_size)
     test_dataset, rotated_test_dataset = get_data_generator(dataset.x_test, dataset.y_test, config.batch_size)
 
-    model,optimizer=model_optimizer_generator()
-
-    print("Training vanilla network with unrotated dataset..")
-    history = train(model, config.initial_epochs, optimizer, config.use_cuda, train_dataset, test_dataset,
-                    config.loss_function)
 
     _, accuracy, _, _ = test(model, test_dataset, config.use_cuda, config.loss_function)
     _, rotated_accuracy, _, _ = test(model, rotated_test_dataset, config.use_cuda, config.loss_function)
@@ -69,10 +67,10 @@ def retraining(model_optimizer_generator,retrained_layers_schemes,config,dataset
 
     models={"None":model}
     for retrained_layers in retrained_layers_schemes:
+        #TODO
         retrained_model,retrained_model_optimizer=model_optimizer_generator(previous_model=model,trainable_layers=retrained_layers)
-
+        # TODO
         # freeze_layers_except(retrained_model.layers(),retrained_model.layer_names(),retrained_layers)
-
         #for name, val in retrained_model.named_parameters():
          #   print(name, val.requires_grad)
 
